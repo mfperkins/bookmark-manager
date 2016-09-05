@@ -1,5 +1,5 @@
 
-require 'link'
+require './app/models/link'
 
 describe Link do
 
