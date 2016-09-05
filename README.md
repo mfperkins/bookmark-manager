@@ -12,7 +12,7 @@ I would like to add and edit them.
 User Story 3:
 As a user,
 So that I can manage my bookmarks
-I would like to add tags to links. 
+I would like to add tags to links.
 
 User Story 4:
 As a user,
