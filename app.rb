@@ -1,5 +1,7 @@
 require 'sinatra/base'
 require './app/models/link.rb'
+ENV["RACK_ENV"] ||= "development"
+
 class App < Sinatra::Base
 
   get '/' do
