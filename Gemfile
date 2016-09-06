@@ -7,6 +7,7 @@ gem 'dm-postgres-adapter'
 gem 'database_cleaner'
 gem 'pg'
 gem 'rake'
+gem 'bcrypt'
 
 group :test do
   gem 'capybara'
