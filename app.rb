@@ -26,9 +26,10 @@ class App < Sinatra::Base
     redirect '/links'
   end
 
-  get '/tags/bubbles' do
-    @links = Link.all(:tags => {:tag => 'Bubbles'})
-    erb(:tags)
+  get '/tags/:tag' do
+    tag = Tag.first(tag: params[:tag])
+    @links = tag ? tag.links : []
+    erb(:links)
   end
 
 end

@@ -14,7 +14,7 @@ feature 'filtering tags' do
     fill_in(:tag, with: "Bootcamp")
     click_button('Submit')
 
-    visit ('/tags/bubbles')
+    visit ('/tags/Bubbles')
     within 'ul#links' do
       expect(page).to have_content 'Title: Bubbles URL: www.bubbleslaundry.com Tag: Bubbles'
       expect(page).not_to have_content 'Title: Makers Academy URL: www.makersacademy.com Tag: Bootcamp'
