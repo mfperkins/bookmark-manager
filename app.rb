@@ -11,7 +11,6 @@ class App < Sinatra::Base
 
   get '/links' do
     @links = Link.all
-    @tags = Tag.all
     erb(:links)
   end
 
@@ -26,4 +25,10 @@ class App < Sinatra::Base
     @link.save
     redirect '/links'
   end
+
+  get '/tags/bubbles' do
+    @links = Link.all(:tags => {:tag => 'Bubbles'})
+    erb(:tags)
+  end
+
 end
