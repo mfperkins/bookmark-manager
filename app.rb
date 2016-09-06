@@ -8,15 +8,22 @@ ENV["RACK_ENV"] ||= "development"
 
 class App < Sinatra::Base
   enable :sessions
+  set :session_secret, 'super secret'
+
+  helpers do
+    def current_user
+      @current_user ||= User.get(session[:user])
+    end
+  end
 
   get '/' do
     redirect '/links'
   end
 
   get '/links' do
-    @user = session[:user]
+    current_user
     @links = Link.all
-    erb(:links)
+    erb :links
   end
 
   get '/links/new' do
@@ -45,8 +52,10 @@ class App < Sinatra::Base
   end
 
   post '/signup' do
-    session[:user] = User.create(name: params[:name], email: params[:email], password_hash: BCrypt::Password.create(params[:password])).name
+    user = User.create(name: params[:name], email: params[:email], password_hash: params[:password])
+    session[:user] = user.id
     redirect '/links'
   end
+
 
 end

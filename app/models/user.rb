@@ -10,4 +10,9 @@ class User
   property :email,   String
   property :password_hash,   BCryptHash
 
+
+  def password=(password)
+    self.password_hash = BCrypt::Password.create(password)
+  end
+
 end
