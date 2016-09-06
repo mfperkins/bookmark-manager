@@ -1,4 +1,5 @@
 require 'sinatra/base'
+require_relative 'data_mapper_setup.rb'
 require './app/models/link.rb'
 ENV["RACK_ENV"] ||= "development"
 
@@ -10,6 +11,7 @@ class App < Sinatra::Base
 
   get '/links' do
     @links = Link.all
+    @tags = Tag.all
     erb(:links)
   end
 
@@ -18,7 +20,10 @@ class App < Sinatra::Base
   end
 
   post '/links' do
-    Link.create(url: params[:url], title: params[:title])
+    @link = Link.create(url: params[:url], title: params[:title])
+    @tag = Tag.create(tag: params[:tag])
+    @link.tags << @tag
+    @link.save
     redirect '/links'
   end
 end
