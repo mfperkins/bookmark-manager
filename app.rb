@@ -52,7 +52,7 @@ class App < Sinatra::Base
   end
 
   post '/signup' do
-    user = User.create(name: params[:name], email: params[:email], password_hash: params[:password])
+    user = User.create(name: params[:name], email: params[:email], password_digest: params[:password], password_confirmation: params[:password_confirmation])
     session[:user] = user.id
     redirect '/links'
   end
