@@ -9,7 +9,6 @@ feature 'creating links' do
 
     click_button('Add Link')
 
-
     within 'ul#links' do
       expect(page).to have_content('Makers Academy')
     end
