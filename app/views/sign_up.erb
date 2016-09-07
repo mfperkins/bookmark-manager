@@ -13,6 +13,10 @@
     </label>
     <label for"password_confirmation">Password Confirmation:
       <input id="password_confirmation", type="password", name="password_confirmation" placeholder="Confirm your password">
+      <% if flash[:wrong_password]%>
+        <%= flash[:wrong_password] %>
+        <% end %>
+
     </label>
     <input type="submit" value="Sign Up">
   </form>

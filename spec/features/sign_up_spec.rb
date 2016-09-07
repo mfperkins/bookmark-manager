@@ -20,5 +20,6 @@ end
   feature 'do NOT allow user to sign up' do
     scenario 'user enters mismatching password & confirmation' do
       expect{failing_sign_up}.to change{User.count}.by(0)
+      expect(page).to have_content('Password and confirmation Password don\'t match')
     end
 end
