@@ -9,3 +9,11 @@ def create_link(url, title, education)
   click_button('Add Link')
 
 end
+
+def sign_up
+  visit '/sign_up'
+  fill_in('name', with: "James")
+  fill_in('email', with: "James@James.com" )
+  fill_in('password', with: "password123")
+  click_button("Sign Up")
+end

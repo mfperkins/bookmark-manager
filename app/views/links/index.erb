@@ -1,4 +1,8 @@
-<h1> Links </h1>
+<% if @user_name != nil %>
+<h1> Welcome, <%= @user_name %> </h1>
+<% end %>
+
+<h2> Current Links </h2>
 
 <ul id='links'>
   <% @links.each do |link| %>
