@@ -12,11 +12,10 @@ class User
 
   property :id,                Serial
   property :name,              String
-  property :email,             String
+  property :email,             String, :required => true
   property :password_digest,   BCryptHash
 
   validates_confirmation_of :password
-  validates_presence_of :email
 
   def password=(password)
     @password = password
