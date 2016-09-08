@@ -16,6 +16,7 @@ class User
   property :password_digest,   BCryptHash
 
   validates_confirmation_of :password
+  validates_presence_of :email
 
   def password=(password)
     @password = password
