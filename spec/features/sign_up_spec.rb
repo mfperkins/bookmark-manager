@@ -28,4 +28,9 @@ end
       expect{missing_email_sign_up}.to_not change{User.count}
       expect(current_path).to eq('/sign_up')
     end
+
+    scenario 'user cannot sign up with an invalid email address' do
+      expect{invalid_email_sign_up}.to_not change{User.count}
+      expect(current_path).to eq('/sign_up')
+    end
 end

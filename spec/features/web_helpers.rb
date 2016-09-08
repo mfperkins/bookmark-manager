@@ -36,3 +36,12 @@ def missing_email_sign_up
   fill_in('password_confirmation', with: "password123")
   click_button("Sign Up")
 end
+
+def invalid_email_sign_up
+  visit '/sign_up'
+  fill_in('name', with: "James")
+  fill_in('email', with: "invalidemail" )
+  fill_in('password', with: "password123")
+  fill_in('password_confirmation', with: "password123")
+  click_button("Sign Up")
+end
