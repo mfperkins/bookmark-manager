@@ -21,7 +21,7 @@ end
     scenario 'user enters mismatching password & confirmation' do
       expect{mismatching_password_sign_up}.to change{User.count}.by(0)
       expect(current_path).to eq('/sign_up')
-      expect(page).to have_content('Password and confirmation Password don\'t match')
+      expect(page).to have_content('Password does not match the confirmation')
     end
 
     scenario 'user cannot sign up without an email address' do
@@ -32,5 +32,12 @@ end
     scenario 'user cannot sign up with an invalid email address' do
       expect{invalid_email_sign_up}.to_not change{User.count}
       expect(current_path).to eq('/sign_up')
+    end
+
+    scenario 'user cannot sign up with the same email address' do
+      sign_up
+      expect{sign_up}.to_not change{User.count}
+      expect(current_path).to eq('/sign_up')
+      expect(page).to have_content('Email is already taken')
     end
 end

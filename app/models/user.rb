@@ -12,7 +12,7 @@ class User
 
   property :id,                Serial
   property :name,              String
-  property :email,             String, :required => true
+  property :email,             String, :required => true, :unique => true
   property :password_digest,   BCryptHash
 
   validates_confirmation_of :password
