@@ -42,5 +42,24 @@ class BookmarkManager < Sinatra::Base
     redirect '/links'
   end
 
+  get '/users/password_recovery' do
+    erb :'users/password_recovery'
+  end
+
+  post '/users/password_recovery' do
+    user = User.first(params[:email])
+    if user
+      user.generate_token
+      flash[:check_email] = "Check your email to recover your password"
+      redirect '/users/new_password'
+    else
+      flash.now[:error] = user.errors.full_messages
+      redirect '/users/password_recovery'
+    end
+  end
+
+  get '/users/new_password' do
+    erb :'users/new_password'
+  end
 
 end

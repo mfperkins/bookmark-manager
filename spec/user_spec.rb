@@ -15,4 +15,14 @@ describe User do
       expect(logged_in_user).to eq nil
     end
   end
+
+  describe '#generate_token' do
+
+    it 'should generate a token in the DB' do
+      test_user = User.create(email: 'murtz@gmail.com', password: '1234', password_confirmation: '1234')
+      test_user.generate_token
+      expect(test_user.password_token).to_not be nil
+    end
+
+  end
 end

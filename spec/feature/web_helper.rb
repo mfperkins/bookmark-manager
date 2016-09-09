@@ -14,3 +14,11 @@ def login
   fill_in('password', :with => '1234')
   click_button 'Log in'
 end
+
+def recover_password
+  sign_up
+  visit '/users/login'
+  click_link("Recover password")
+  fill_in('email', :with => "murtz@gmail.com")
+  click_button("Submit")
+end
